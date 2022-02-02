@@ -109,6 +109,66 @@ public class ProfesorDAO implements IColegioBaseDAO<Profesor> {
 			throw new RuntimeException("Error al leer el registro", e);
 		}
 	}
+	
+	@Override
+	public Profesor insert(Profesor profesor) {
+		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
+		PreparedStatement statement = null;
+		try {
+			statement = conexion.prepareStatement("INSERT INTO Profesores(nombre,apellido) VALUES(?,?)"); // Creación de
+																										// sentencia en
+																										// blanco.
+			statement.setString(1, profesor.getNombre());
+			statement.setString(2, profesor.getApellido());
+
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al obtener la conexión", e);
+		}
+		ResultSet rs;
+		try {
+			statement.executeUpdate(); // Ejecución de consulta y
+			rs = statement.getGeneratedKeys();
+
+			// asignamos el resultado a
+			// un resultset
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al ejecutar la consulta", e);
+		}
+		try {
+			if (rs.next()) {
+				profesor.setId(rs.getInt(1));
+				return profesor;
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al leer el registro", e);
+		}
+	}
+
+	@Override
+	public void update(Profesor profesor) {
+		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
+		PreparedStatement statement = null;
+		try {
+			statement = conexion.prepareStatement("UPDATE Profesores SET nombre=?,apellido=? WHERE ID=?"); // Creación de
+																										// sentencia en
+																										// blanco.
+			statement.setString(1, profesor.getNombre());
+			statement.setString(2, profesor.getApellido());
+			statement.setInt(3, profesor.getId());
+
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al obtener la conexión", e);
+		}
+
+		try {
+			statement.executeUpdate(); // Ejecución de consulta y // asignamos el resultado a // un resultset
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al ejecutar la consulta", e);
+		}
+
+	}
 
 	
 }

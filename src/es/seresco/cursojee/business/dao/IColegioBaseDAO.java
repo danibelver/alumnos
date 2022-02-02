@@ -13,5 +13,7 @@ public interface IColegioBaseDAO <T extends ColegioBaseEntity> {
 	Integer count();
 	
 	T insert(T objetoAInsertar);
+	
+	void update(T objetoAInsertar);
 
 }

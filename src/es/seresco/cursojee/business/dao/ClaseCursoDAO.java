@@ -76,4 +76,16 @@ public class ClaseCursoDAO implements IColegioBaseDAO<ClaseCurso> {
 		return null;
 	}
 
+	@Override
+	public ClaseCurso insert(ClaseCurso objetoAInsertar) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(ClaseCurso objetoAInsertar) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

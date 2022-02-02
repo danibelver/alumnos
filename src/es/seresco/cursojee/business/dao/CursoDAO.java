@@ -10,12 +10,14 @@ import java.util.List;
 
 import es.seresco.cursojee.business.entities.Curso;
 
-public class CursoDAO {
+
+public class CursoDAO implements IColegioBaseDAO<Curso> {
 	
 	public static final String COLUMN_ANIO_INICIO="anio_inicio";
 	public static final String COLUMN_ANIO_FIN ="anio_fin";
 	public static final String COLUMN_ID="id";
 
+	@Override
 	public List<Curso> findAll() {
 		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
 		List<Curso> resultado = new ArrayList<Curso>();
@@ -48,7 +50,8 @@ public class CursoDAO {
 		}
 	}
 
-	public Integer countCursos() {
+	@Override
+	public Integer count() {
 
 		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
 		Statement statement = null;
@@ -77,6 +80,7 @@ public class CursoDAO {
 		}
 	}
 	
+	@Override
 	public Curso findById(Integer id) {
 		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
 		PreparedStatement statement = null;
@@ -107,6 +111,66 @@ public class CursoDAO {
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException("Error al leer el registro", e);
+		}
+	}
+	
+	@Override
+	public Curso insert(Curso curso) {
+		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
+		PreparedStatement statement = null;
+		try {
+			statement = conexion.prepareStatement("INSERT INTO Cursos(anio_inicio,anio_fin) VALUES(?,?)"); // Creación de
+																									// sentencia en
+																									// blanco.
+			statement.setInt(1, curso.getAnioInicio());
+			statement.setInt(2, curso.getAnioFin());
+
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al obtener la conexión", e);
+		}
+		ResultSet rs;
+		try {
+			statement.executeUpdate(); // Ejecución de consulta y
+			rs = statement.getGeneratedKeys();
+
+			// asignamos el resultado a
+			// un resultset
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al ejecutar la consulta", e);
+		}
+		try {
+			if (rs.next()) {
+				curso.setId(rs.getInt(1));
+				return curso;
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al leer el registro", e);
+		}
+	}
+
+	@Override
+	public void update(Curso curso) {
+		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
+		PreparedStatement statement = null;
+		try {
+			statement = conexion.prepareStatement("UPDATE Cursos SET anioInicio=?,anioFin=? WHERE ID=?"); // Creación de
+																									// sentencia en
+																									// blanco.
+			statement.setInt(1, curso.getAnioInicio());
+			statement.setInt(2, curso.getAnioFin());
+			statement.setInt(3, curso.getId());
+
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al obtener la conexión", e);
+		}
+
+		try {
+			statement.executeUpdate(); // Ejecución de consulta y
+										// un resultset
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al ejecutar la consulta", e);
 		}
 	}
 
