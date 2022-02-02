@@ -19,7 +19,7 @@ public class AlumnoService {
 	}
 
 	public Integer count() {
-		return alumnoDAO.countAlumnos();
+		return alumnoDAO.count();
 	}
 
 	public Alumno findById(Integer id) {

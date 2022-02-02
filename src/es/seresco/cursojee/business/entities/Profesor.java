@@ -1,6 +1,6 @@
 package es.seresco.cursojee.business.entities;
 
-public class Alumno extends ColegioBaseEntity{
+public class Profesor extends ColegioBaseEntity{
 
 	private Integer id;
 
@@ -9,7 +9,7 @@ public class Alumno extends ColegioBaseEntity{
 	private String apellido;
 
 
-	public Alumno() {
+	public Profesor() {
 		super();
 	}
 

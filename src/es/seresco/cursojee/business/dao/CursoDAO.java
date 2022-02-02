@@ -8,17 +8,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.seresco.cursojee.business.entities.Alumno;
+import es.seresco.cursojee.business.entities.Curso;
 
-public class AlumnoDAO implements IColegioBaseDAO<Alumno>{
+public class CursoDAO {
 	
-	public static final String COLUMN_NOMBRE="nombre";
-	public static final String COLUMN_APELLIDO ="apellido";
+	public static final String COLUMN_ANIO_INICIO="anio_inicio";
+	public static final String COLUMN_ANIO_FIN ="anio_fin";
 	public static final String COLUMN_ID="id";
 
-	public List<Alumno> findAll() {
+	public List<Curso> findAll() {
 		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
-		List<Alumno> resultado = new ArrayList<Alumno>();
+		List<Curso> resultado = new ArrayList<Curso>();
 
 		Statement statement = null;
 		try {
@@ -28,18 +28,18 @@ public class AlumnoDAO implements IColegioBaseDAO<Alumno>{
 		}
 		ResultSet rs;
 		try {
-			rs = statement.executeQuery("Select id,nombre,apellido from Alumnos"); // Ejecución de consulta y asignamos
+			rs = statement.executeQuery("Select id,anio_inicio,anio_fin from Cursos"); // Ejecución de consulta y asignamos
 																					// el resultado a un resultset
 		} catch (SQLException e) {
 			throw new RuntimeException("Error al ejecutar la consulta", e);
 		}
 		try {
 			while (rs.next()) {
-				Alumno alumno = new Alumno();
-				alumno.setId(rs.getInt(COLUMN_ID)); // Leemos una columna del resultset
-				alumno.setNombre(rs.getString(COLUMN_NOMBRE));
-				alumno.setApellido(rs.getString(COLUMN_APELLIDO));
-				resultado.add(alumno);
+				Curso curso = new Curso();
+				curso.setId(rs.getInt(COLUMN_ID)); // Leemos una columna del resultset
+				curso.setAnioInicio(rs.getInt(COLUMN_ANIO_INICIO));
+				curso.setAnioFin(rs.getInt(COLUMN_ANIO_FIN));
+				resultado.add(curso);
 			}
 			
 			return resultado;
@@ -48,7 +48,7 @@ public class AlumnoDAO implements IColegioBaseDAO<Alumno>{
 		}
 	}
 
-	public Integer count() {
+	public Integer countCursos() {
 
 		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
 		Statement statement = null;
@@ -59,7 +59,7 @@ public class AlumnoDAO implements IColegioBaseDAO<Alumno>{
 		}
 		ResultSet rs;
 		try {
-			rs = statement.executeQuery("Select count(1) as numeroAlumnos from Alumnos"); // Ejecución de consulta y
+			rs = statement.executeQuery("Select count(1) as numeroCursos from Cursos"); // Ejecución de consulta y
 																							// asignamos el resultado a
 																							// un resultset
 		} catch (SQLException e) {
@@ -67,7 +67,7 @@ public class AlumnoDAO implements IColegioBaseDAO<Alumno>{
 		}
 		try {
 			if (rs.next()) {
-				Integer numero = rs.getInt("numeroAlumnos"); // Leemos una columna del resultset
+				Integer numero = rs.getInt("numeroCursos"); // Leemos una columna del resultset
 				return numero;
 			} else {
 				return 0;
@@ -77,11 +77,11 @@ public class AlumnoDAO implements IColegioBaseDAO<Alumno>{
 		}
 	}
 	
-	public Alumno findById(Integer id) {
+	public Curso findById(Integer id) {
 		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
 		PreparedStatement statement = null;
 		try {
-			statement = conexion.prepareStatement("Select id,nombre,apellido from Alumnos where id=?"); // Creación de sentencia en blanco.
+			statement = conexion.prepareStatement("Select id,anio_inicio,anio_fin from Cursos where id=?"); // Creación de sentencia en blanco.
 			statement.setInt(1, id);
 
 		} catch (SQLException e) {
@@ -97,11 +97,11 @@ public class AlumnoDAO implements IColegioBaseDAO<Alumno>{
 		}
 		try {
 			if (rs.next()) {
-				Alumno alumno = new Alumno();
-				alumno.setId(rs.getInt(COLUMN_ID)); // Leemos una columna del resultset
-				alumno.setNombre(rs.getString(COLUMN_NOMBRE));
-				alumno.setApellido(rs.getString(COLUMN_APELLIDO));
-				return alumno;
+				Curso curso = new Curso();
+				curso.setId(rs.getInt(COLUMN_ID)); // Leemos una columna del resultset
+				curso.setAnioInicio(rs.getInt(COLUMN_ANIO_INICIO));
+				curso.setAnioFin(rs.getInt(COLUMN_ANIO_FIN));
+				return curso;
 			} else {
 				return null;
 			}

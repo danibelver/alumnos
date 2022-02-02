@@ -1,0 +1,29 @@
+package es.seresco.cursojee.business.service;
+
+import java.util.List;
+
+import es.seresco.cursojee.business.dao.ProfesorDAO;
+import es.seresco.cursojee.business.entities.Profesor;
+
+public class ProfesorService {
+
+	private ProfesorDAO profesorDAO;
+
+	public ProfesorService() {
+		super();
+		profesorDAO = new ProfesorDAO();
+	}
+
+	public List<Profesor> findAll() {
+		return profesorDAO.findAll();
+	}
+
+	public Integer count() {
+		return profesorDAO.count();
+	}
+
+	public Profesor findById(Integer id) {
+		return profesorDAO.findById(id);
+	}
+
+}
