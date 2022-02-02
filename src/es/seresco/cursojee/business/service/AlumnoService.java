@@ -25,5 +25,13 @@ public class AlumnoService {
 	public Alumno findById(Integer id) {
 		return alumnoDAO.findById(id);
 	}
+	
+	public Alumno insert(Alumno alumno) {
+		return alumnoDAO.insert(alumno);
+	}
+	
+	public void update(Alumno alumno) {
+		alumnoDAO.update(alumno);
+	}
 
 }

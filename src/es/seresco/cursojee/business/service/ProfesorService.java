@@ -25,5 +25,13 @@ public class ProfesorService {
 	public Profesor findById(Integer id) {
 		return profesorDAO.findById(id);
 	}
+	
+	public Profesor insert(Profesor profesor) {
+		return profesorDAO.insert(profesor);
+	}
+	
+	public void update(Profesor profesor) {
+		profesorDAO.update(profesor);
+	}
 
 }
