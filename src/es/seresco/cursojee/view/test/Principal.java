@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import es.seresco.cursojee.business.entities.Alumno;
+import es.seresco.cursojee.business.entities.Profesor;
 import es.seresco.cursojee.business.service.AlumnoService;
+import es.seresco.cursojee.business.service.ProfesorService;
 
 public class Principal {
 	
@@ -13,12 +15,10 @@ public class Principal {
 
 	public static void main(String[] args) {
 
-		AlumnoService alumnoService = new AlumnoService();
-		List<Alumno> listaAlumnos = alumnoService.findAll();
-		System.out.println("Número de alumnos: " + listaAlumnos.size());
-
-		Alumno alumno = alumnoService.findById(1);
-		System.out.println("-" + alumno.getNombre() + " " + alumno.getApellido());
+		ProfesorService profesorService = new ProfesorService();
+		Profesor profesor = new Profesor();
+		profesor.setId(14);
+		profesorService.delete(profesor);
 		logger.debug("Todo OK");
 
 	}

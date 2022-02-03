@@ -47,8 +47,8 @@ public class ProfesorService {
 		
 		for (ClaseCurso claseCurso : clasesCurso) {
 			if(profesor.getId().equals(claseCurso.getTutor().getId() )) {
-				claseCursoService.delete(claseCurso);
-				//throw new RuntimeException("No se puede borrar el profesor porque está asignado como tutor en una clase");
+				//claseCursoService.delete(claseCurso);
+				throw new RuntimeException("No se puede borrar el profesor porque está asignado como tutor en una clase");
 			}
 		
 	}

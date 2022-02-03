@@ -1,48 +1,58 @@
+DROP TABLE Alumnos_Clase_Curso;
+DROP TABLE Clases_Curso;
+DROP TABLE Profesores;
+DROP TABLE Alumnos;
+
+DROP TABLE Cursos;
+DROP TABLE Clases;
+
+
+
 -- Alumnos definition
 
 CREATE TABLE Alumnos (
-  id int NOT NULL AUTO_INCREMENT,
-  Nombre varchar(25) DEFAULT NULL,
-  Apellido varchar(25) DEFAULT NULL,
+  id int AUTO_INCREMENT NOT NULL,
+  Nombre varchar(25) NULL,
+  Apellido varchar(25) NULL,
   PRIMARY KEY (id)
-)
+);
 
 
 -- Clases definition
 
 CREATE TABLE Clases (
-  id int NOT NULL AUTO_INCREMENT,
+  id int AUTO_INCREMENT NOT NULL,
   curso int NOT NULL,
   letra varchar(1) NOT NULL,
   PRIMARY KEY (id)
-)
+);
 
 
 -- Cursos definition
 
 CREATE TABLE Cursos (
-  id int NOT NULL AUTO_INCREMENT,
+  id int AUTO_INCREMENT NOT NULL,
   anio_inicio int NOT NULL,
-  anio_fin int DEFAULT NULL,
+  anio_fin int NULL,
   PRIMARY KEY (id)
-)
+);
 
 
 -- Profesores definition
 
 CREATE TABLE Profesores (
-  id int NOT NULL AUTO_INCREMENT,
-  Nombre varchar(25) DEFAULT NULL,
-  Apellido varchar(25) DEFAULT NULL,
+  id int AUTO_INCREMENT NOT NULL,
+  Nombre varchar(25) NULL,
+  Apellido varchar(25) NULL,
   PRIMARY KEY (id)
-)
+);
 
 
 
 -- Clases_Curso definition
 
 CREATE TABLE Clases_Curso (
-  id int NOT NULL AUTO_INCREMENT,
+  id int AUTO_INCREMENT NOT NULL,
   id_curso int NOT NULL,
   id_clase int NOT NULL,
   id_tutor int NOT NULL,
@@ -53,7 +63,7 @@ CREATE TABLE Clases_Curso (
   CONSTRAINT Clases_Curso_FK FOREIGN KEY (id_tutor) REFERENCES Profesores (id),
   CONSTRAINT Clases_Curso_FK_1 FOREIGN KEY (id_curso) REFERENCES Cursos (id),
   CONSTRAINT Clases_Curso_FK_2 FOREIGN KEY (id_clase) REFERENCES Clases (id)
-)
+);
 
 
 
@@ -66,7 +76,7 @@ CREATE TABLE Alumnos_Clase_Curso (
   KEY Alumnos_Clase_Curso_FK_1 (id_clase_curso),
   CONSTRAINT Alumnos_Clase_Curso_FK FOREIGN KEY (id_alumno) REFERENCES Alumnos (id),
   CONSTRAINT Alumnos_Clase_Curso_FK_1 FOREIGN KEY (id_clase_curso) REFERENCES Clases_Curso (id)
-)
+);
 
 
 INSERT INTO Clases (id, curso, letra) VALUES(1, 1, 'A');
