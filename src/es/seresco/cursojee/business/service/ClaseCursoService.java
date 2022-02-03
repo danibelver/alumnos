@@ -21,7 +21,7 @@ public class ClaseCursoService {
 	public ClaseCursoService() {
 		super();
 		claseCursoDAO = new ClaseCursoDAO();
-		profesorService = new ProfesorService();
+		//profesorService = new ProfesorService();
 		claseService = new ClaseService();
 		cursoService = new CursoService();
 	}
