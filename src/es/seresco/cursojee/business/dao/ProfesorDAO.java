@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.seresco.cursojee.business.entities.Curso;
 import es.seresco.cursojee.business.entities.Profesor;
 
 public class ProfesorDAO implements IColegioBaseDAO<Profesor> {
@@ -176,7 +175,7 @@ public class ProfesorDAO implements IColegioBaseDAO<Profesor> {
 		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
 		PreparedStatement statement = null;
 		try {
-			statement = conexion.prepareStatement("DELETE FROM Profesor WHERE ID=?"); // Creación de
+			statement = conexion.prepareStatement("DELETE FROM Profesores WHERE ID=?"); // Creación de
 																									// sentencia en																								// blanco.
 			statement.setInt(1, profesor.getId());
 
