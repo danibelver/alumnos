@@ -171,5 +171,27 @@ public class AlumnoDAO implements IColegioBaseDAO<Alumno> {
 		}
 
 	}
+	
+	@Override
+	public void delete(Alumno alumno) {
+		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
+		PreparedStatement statement = null;
+		try {
+			statement = conexion.prepareStatement("DELETE FROM Alumnos WHERE ID=?"); // Creación de
+																									// sentencia en
+																									// blanco.
+			statement.setInt(1, alumno.getId());
+
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al obtener la conexión", e);
+		}
+
+		try {
+			statement.executeUpdate(); // Ejecución de consulta y
+										// un resultset
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al ejecutar la consulta", e);
+		}
+	}
 
 }

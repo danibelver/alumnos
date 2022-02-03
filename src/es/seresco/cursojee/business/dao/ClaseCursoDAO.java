@@ -18,24 +18,25 @@ import es.seresco.cursojee.business.entities.ClaseCurso;
  *
  */
 public class ClaseCursoDAO implements IColegioBaseDAO<ClaseCurso> {
-	
-	
-	private static final String COLUMN_ID="id";
-	
-	private static final String COLUMN_ID_CLASE="id_clase";
-	
-	private static final String COLUMN_ID_CURSO="id_curso";
-	
-	private static final String COLUMN_ID_TUTOR="id_tutor";
 
-	
+	private static final String COLUMN_ID = "id";
+
+	private static final String COLUMN_ID_CLASE = "id_clase";
+
+	private static final String COLUMN_ID_CURSO = "id_curso";
+
+	private static final String COLUMN_ID_TUTOR = "id_tutor";
 
 	@Override
 	public ClaseCurso findById(Integer id) {
 		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
 		PreparedStatement statement = null;
 		try {
-			statement = conexion.prepareStatement("Select id,id_curso,id_clase,id_tutor from Clases_Curso where id=?"); // Creación de sentencia en blanco.
+			statement = conexion.prepareStatement("Select id,id_curso,id_clase,id_tutor from Clases_Curso where id=?"); // Creación
+																														// de
+																														// sentencia
+																														// en
+																														// blanco.
 			statement.setInt(1, id);
 
 		} catch (SQLException e) {
@@ -44,8 +45,8 @@ public class ClaseCursoDAO implements IColegioBaseDAO<ClaseCurso> {
 		ResultSet rs;
 		try {
 			rs = statement.executeQuery(); // Ejecución de consulta y
-																							// asignamos el resultado a
-																							// un resultset
+											// asignamos el resultado a
+											// un resultset
 		} catch (SQLException e) {
 			throw new RuntimeException("Error al ejecutar la consulta", e);
 		}
@@ -65,7 +66,6 @@ public class ClaseCursoDAO implements IColegioBaseDAO<ClaseCurso> {
 		}
 	}
 
-	
 	@Override
 	public List<ClaseCurso> findAll() {
 		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
@@ -130,15 +130,15 @@ public class ClaseCursoDAO implements IColegioBaseDAO<ClaseCurso> {
 		}
 	}
 
-
 	@Override
 	public ClaseCurso insert(ClaseCurso claseCurso) {
 		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
 		PreparedStatement statement = null;
 		try {
-			statement = conexion.prepareStatement("INSERT INTO Clases_Curso(id_clase,id_curso,id_tutor) VALUES(?,?,?)"); // Creación de
-																									// sentencia en
-			
+			statement = conexion.prepareStatement("INSERT INTO Clases_Curso(id_clase,id_curso,id_tutor) VALUES(?,?,?)"); // Creación
+																															// de
+			// sentencia en
+
 			statement.setInt(1, claseCurso.getClase().getId());
 			statement.setInt(2, claseCurso.getCurso().getId());
 			statement.setInt(3, claseCurso.getTutor().getId());
@@ -173,9 +173,11 @@ public class ClaseCursoDAO implements IColegioBaseDAO<ClaseCurso> {
 		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
 		PreparedStatement statement = null;
 		try {
-			statement = conexion.prepareStatement("UPDATE Clases_Curso SET id_clase=?,id_curso=?,id_tutor=? WHERE ID=?"); // Creación de
-																									// sentencia en
-																									// blanco.
+			statement = conexion
+					.prepareStatement("UPDATE Clases_Curso SET id_clase=?,id_curso=?,id_tutor=? WHERE ID=?"); // Creación
+																												// de
+			// sentencia en
+			// blanco.
 			statement.setInt(1, claseCurso.getClase().getId());
 			statement.setInt(2, claseCurso.getCurso().getId());
 			statement.setInt(3, claseCurso.getTutor().getId());
@@ -193,7 +195,26 @@ public class ClaseCursoDAO implements IColegioBaseDAO<ClaseCurso> {
 		}
 	}
 
-	
-	
+	@Override
+	public void delete(ClaseCurso claseCurso) {
+		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
+		PreparedStatement statement = null;
+		try {
+			statement = conexion.prepareStatement("DELETE FROM Clases_Curso WHERE ID=?"); // Creación de
+																						// sentencia en
+																						// blanco.
+			statement.setInt(1, claseCurso.getId());
+
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al obtener la conexión", e);
+		}
+
+		try {
+			statement.executeUpdate(); // Ejecución de consulta y
+										// un resultset
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al ejecutar la consulta", e);
+		}
+	}
 
 }

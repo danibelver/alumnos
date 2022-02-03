@@ -33,5 +33,9 @@ public class ProfesorService {
 	public void update(Profesor profesor) {
 		profesorDAO.update(profesor);
 	}
+	
+	public void delete(Profesor profesor) {
+		profesorDAO.delete(profesor);
+	}
 
 }

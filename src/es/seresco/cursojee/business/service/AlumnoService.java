@@ -33,5 +33,9 @@ public class AlumnoService {
 	public void update(Alumno alumno) {
 		alumnoDAO.update(alumno);
 	}
+	
+	public void delete(Alumno alumno) {
+		alumnoDAO.delete(alumno);
+	}
 
 }

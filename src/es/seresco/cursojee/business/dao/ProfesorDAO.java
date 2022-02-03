@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.seresco.cursojee.business.entities.Curso;
 import es.seresco.cursojee.business.entities.Profesor;
 
 public class ProfesorDAO implements IColegioBaseDAO<Profesor> {
@@ -168,6 +169,27 @@ public class ProfesorDAO implements IColegioBaseDAO<Profesor> {
 			throw new RuntimeException("Error al ejecutar la consulta", e);
 		}
 
+	}
+	
+	@Override
+	public void delete(Profesor profesor) {
+		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
+		PreparedStatement statement = null;
+		try {
+			statement = conexion.prepareStatement("DELETE FROM Profesor WHERE ID=?"); // Creación de
+																									// sentencia en																								// blanco.
+			statement.setInt(1, profesor.getId());
+
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al obtener la conexión", e);
+		}
+
+		try {
+			statement.executeUpdate(); // Ejecución de consulta y
+										// un resultset
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al ejecutar la consulta", e);
+		}
 	}
 
 	

@@ -173,5 +173,26 @@ public class CursoDAO implements IColegioBaseDAO<Curso> {
 			throw new RuntimeException("Error al ejecutar la consulta", e);
 		}
 	}
+	
+	@Override
+	public void delete(Curso curso) {
+		Connection conexion = ConnectionFactory.getConnection(); // Obtener conexión
+		PreparedStatement statement = null;
+		try {
+			statement = conexion.prepareStatement("DELETE FROM Cursos WHERE ID=?"); // Creación de
+																									// sentencia en																								// blanco.
+			statement.setInt(1, curso.getId());
+
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al obtener la conexión", e);
+		}
+
+		try {
+			statement.executeUpdate(); // Ejecución de consulta y
+										// un resultset
+		} catch (SQLException e) {
+			throw new RuntimeException("Error al ejecutar la consulta", e);
+		}
+	}
 
 }

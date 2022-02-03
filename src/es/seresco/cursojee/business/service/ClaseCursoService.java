@@ -11,11 +11,11 @@ import es.seresco.cursojee.business.entities.Profesor;
 public class ClaseCursoService {
 
 	private ClaseCursoDAO claseCursoDAO;
-	
+
 	private ProfesorService profesorService;
-	
+
 	private ClaseService claseService;
-	
+
 	private CursoService cursoService;
 
 	public ClaseCursoService() {
@@ -35,19 +35,30 @@ public class ClaseCursoService {
 	}
 
 	public ClaseCurso findById(Integer id) {
-		ClaseCurso claseCurso= claseCursoDAO.findById(id);
-		
-		Profesor profesor=profesorService.findById(claseCurso.getTutor().getId());
+		ClaseCurso claseCurso = claseCursoDAO.findById(id);
+
+		Profesor profesor = profesorService.findById(claseCurso.getTutor().getId());
 		claseCurso.setTutor(profesor);
-		
+
 		Clase clase = claseService.findById(claseCurso.getClase().getId());
 		claseCurso.setClase(clase);
-		
+
 		Curso curso = cursoService.findById(claseCurso.getCurso().getId());
 		claseCurso.setCurso(curso);
-		
-		
+
 		return claseCurso;
+	}
+
+	public ClaseCurso insert(ClaseCurso claseCurso) {
+		return claseCursoDAO.insert(claseCurso);
+	}
+
+	public void update(ClaseCurso claseCurso) {
+		claseCursoDAO.update(claseCurso);
+	}
+
+	public void delete(ClaseCurso claseCurso) {
+		claseCursoDAO.delete(claseCurso);
 	}
 
 }
