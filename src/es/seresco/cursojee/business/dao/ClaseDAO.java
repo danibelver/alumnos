@@ -14,7 +14,7 @@ import es.seresco.cursojee.business.entities.Clase;
 
 public class ClaseDAO implements IColegioBaseDAO<Clase> {
 
-	public static final String COLUMN_CURSO = "clase";
+	public static final String COLUMN_CURSO = "curso";
 	public static final String COLUMN_LETRA = "letra";
 	public static final String COLUMN_ID = "id";
 	
@@ -34,7 +34,7 @@ public class ClaseDAO implements IColegioBaseDAO<Clase> {
 		}
 		ResultSet rs;
 		try {
-			rs = statement.executeQuery("Select id,anio_inicio,anio_fin from Clases"); // Ejecución de consulta y asignamos el resultado a un resultset
+			rs = statement.executeQuery("Select id,curso,letra from Clases"); // Ejecución de consulta y asignamos el resultado a un resultset
 		} catch (SQLException e) {
 			logger.error("Ha ocurrido un error al ejecutar la consulta para obtener todos los registros",e);
 			throw new RuntimeException("Error al ejecutar la consulta", e);

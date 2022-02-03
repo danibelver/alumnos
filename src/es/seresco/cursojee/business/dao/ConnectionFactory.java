@@ -19,7 +19,7 @@ public class ConnectionFactory {
 
 	private static final String PASSWORD = "Seresco01";
 	
-	final static Logger logger = Logger.getLogger(Principal.class);
+	final static Logger logger = Logger.getLogger(ConnectionFactory.class);
 	
 
 	private ConnectionFactory() {

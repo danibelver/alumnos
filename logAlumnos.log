@@ -1,0 +1,66 @@
+2022-02-03 17:18:47 [DEBUG] - es.seresco.cursojee.business.dao.ClaseDAO -ClaseDAO.java(24) -Entrando en el método findAll
+2022-02-03 17:18:47 [DEBUG] - es.seresco.cursojee.view.test.Principal -ConnectionFactory.java(31) -Se va a realizar una coonexión con la base de datos
+2022-02-03 17:18:50 [DEBUG] - es.seresco.cursojee.view.test.Principal -ConnectionFactory.java(39) -Conexión con la base de datos realizada correctamente.
+2022-02-03 17:18:50 [ERROR] - es.seresco.cursojee.business.dao.ClaseDAO -ClaseDAO.java(39) -Ha ocurrido un error al ejecutar la consulta para obtener todos los registros
+java.sql.SQLSyntaxErrorException: Unknown column 'anio_inicio' in 'field list'
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.StatementImpl.executeQuery(StatementImpl.java:1201)
+	at es.seresco.cursojee.business.dao.ClaseDAO.findAll(ClaseDAO.java:37)
+	at es.seresco.cursojee.business.service.ClaseService.findAll(ClaseService.java:18)
+	at es.seresco.cursojee.view.test.Principal.main(Principal.java:14)
+2022-02-03 17:34:03 [DEBUG] - es.seresco.cursojee.business.dao.ClaseDAO -ClaseDAO.java(24) -Entrando en el método findAll
+2022-02-03 17:34:03 [DEBUG] - es.seresco.cursojee.view.test.Principal -ConnectionFactory.java(31) -Se va a realizar una coonexión con la base de datos
+2022-02-03 17:34:06 [DEBUG] - es.seresco.cursojee.view.test.Principal -ConnectionFactory.java(39) -Conexión con la base de datos realizada correctamente.
+2022-02-03 17:34:06 [ERROR] - es.seresco.cursojee.business.dao.ClaseDAO -ClaseDAO.java(39) -Ha ocurrido un error al ejecutar la consulta para obtener todos los registros
+java.sql.SQLSyntaxErrorException: Unknown column 'anio_inicio' in 'field list'
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.StatementImpl.executeQuery(StatementImpl.java:1201)
+	at es.seresco.cursojee.business.dao.ClaseDAO.findAll(ClaseDAO.java:37)
+	at es.seresco.cursojee.business.service.ClaseService.findAll(ClaseService.java:18)
+	at es.seresco.cursojee.view.test.Principal.main(Principal.java:14)
+2022-02-03 17:34:21 [DEBUG] - es.seresco.cursojee.view.test.Principal -Principal.java(15) -Todo OK
+2022-02-03 17:35:15 [ INFO] - es.seresco.cursojee.view.test.Principal -Principal.java(15) -Todo OK
+2022-02-03 17:52:43 [ERROR] - es.seresco.cursojee.business.dao.ClaseDAO -ClaseDAO.java(39) -Ha ocurrido un error al ejecutar la consulta para obtener todos los registros
+java.sql.SQLSyntaxErrorException: Unknown column 'anio_inicio' in 'field list'
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.StatementImpl.executeQuery(StatementImpl.java:1201)
+	at es.seresco.cursojee.business.dao.ClaseDAO.findAll(ClaseDAO.java:37)
+	at es.seresco.cursojee.business.service.ClaseService.findAll(ClaseService.java:18)
+	at es.seresco.cursojee.view.test.Principal.main(Principal.java:14)
+2022-02-03 17:53:42 [ERROR] - es.seresco.cursojee.business.dao.ClaseDAO -ClaseDAO.java(55) -Ha ocurrido un error al leer el registro
+java.sql.SQLException: Column 'clase' not found.
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:584)
+	at mysql.connector.java@8.0.28/com.mysql.cj.jdbc.result.ResultSetImpl.getInt(ResultSetImpl.java:851)
+	at es.seresco.cursojee.business.dao.ClaseDAO.findAll(ClaseDAO.java:46)
+	at es.seresco.cursojee.business.service.ClaseService.findAll(ClaseService.java:18)
+	at es.seresco.cursojee.view.test.Principal.main(Principal.java:14)
+2022-02-03 17:54:27 [ INFO] - es.seresco.cursojee.business.dao.ClaseDAO -ClaseDAO.java(51) -Se han leído los 4 registros de la tabla correctamente
+2022-02-03 18:07:12 [DEBUG] - es.seresco.cursojee.business.dao.AlumnoDAO -AlumnoDAO.java(95) -Entrando en el método findById
+2022-02-03 18:07:12 [DEBUG] - es.seresco.cursojee.view.test.Principal -ConnectionFactory.java(31) -Se va a realizar una coonexión con la base de datos
+2022-02-03 18:07:14 [DEBUG] - es.seresco.cursojee.view.test.Principal -ConnectionFactory.java(39) -Conexión con la base de datos realizada correctamente.
+2022-02-03 18:07:14 [ WARN] - es.seresco.cursojee.business.dao.AlumnoDAO -AlumnoDAO.java(123) -No se ha encontrado el registro con identificador99
+2022-02-03 18:07:14 [DEBUG] - es.seresco.cursojee.view.test.Principal -Principal.java(16) -Todo OK
+2022-02-03 18:07:34 [DEBUG] - es.seresco.cursojee.business.dao.AlumnoDAO -AlumnoDAO.java(95) -Entrando en el método findById
+2022-02-03 18:07:34 [DEBUG] - es.seresco.cursojee.view.test.Principal -ConnectionFactory.java(31) -Se va a realizar una coonexión con la base de datos
+2022-02-03 18:07:38 [DEBUG] - es.seresco.cursojee.view.test.Principal -ConnectionFactory.java(39) -Conexión con la base de datos realizada correctamente.
+2022-02-03 18:07:38 [ WARN] - es.seresco.cursojee.business.dao.AlumnoDAO -AlumnoDAO.java(123) -No se ha encontrado el registro con identificador99
+2022-02-03 18:07:38 [DEBUG] - es.seresco.cursojee.view.test.Principal -Principal.java(16) -Todo OK
+2022-02-03 18:09:46 [DEBUG] - es.seresco.cursojee.business.dao.AlumnoDAO -AlumnoDAO.java(95) -Entrando en el método findById
+2022-02-03 18:09:46 [DEBUG] - es.seresco.cursojee.view.test.Principal -ConnectionFactory.java(31) -Se va a realizar una coonexión con la base de datos
+2022-02-03 18:09:49 [DEBUG] - es.seresco.cursojee.view.test.Principal -ConnectionFactory.java(39) -Conexión con la base de datos realizada correctamente.
+2022-02-03 18:09:49 [DEBUG] - es.seresco.cursojee.business.dao.AlumnoDAO -AlumnoDAO.java(119) -Registro Roberto Suárez leído correctamente.
+2022-02-03 18:09:49 [ INFO] - es.seresco.cursojee.business.dao.AlumnoDAO -AlumnoDAO.java(120) -Localizado registro con identificador 2
+2022-02-03 18:09:49 [DEBUG] - es.seresco.cursojee.view.test.Principal -Principal.java(16) -Todo OK
+2022-02-03 18:15:23 [DEBUG] - es.seresco.cursojee.business.dao.AlumnoDAO -AlumnoDAO.java(95) -Entrando en el método findById
+2022-02-03 18:15:23 [DEBUG] - es.seresco.cursojee.business.dao.ConnectionFactory -ConnectionFactory.java(31) -Se va a realizar una coonexión con la base de datos
+2022-02-03 18:15:24 [DEBUG] - es.seresco.cursojee.business.dao.ConnectionFactory -ConnectionFactory.java(39) -Conexión con la base de datos realizada correctamente.
+2022-02-03 18:15:25 [DEBUG] - es.seresco.cursojee.business.dao.AlumnoDAO -AlumnoDAO.java(119) -Registro Roberto Suárez leído correctamente.
+2022-02-03 18:15:25 [ INFO] - es.seresco.cursojee.business.dao.AlumnoDAO -AlumnoDAO.java(120) -Localizado registro con identificador 2
+2022-02-03 18:15:25 [DEBUG] - es.seresco.cursojee.view.test.Principal -Principal.java(16) -Todo OK

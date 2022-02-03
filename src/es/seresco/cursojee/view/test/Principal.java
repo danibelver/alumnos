@@ -2,6 +2,7 @@ package es.seresco.cursojee.view.test;
 
 import org.apache.log4j.Logger;
 
+import es.seresco.cursojee.business.service.AlumnoService;
 import es.seresco.cursojee.business.service.ClaseService;
 
 public class Principal {
@@ -10,8 +11,8 @@ public class Principal {
 
 	public static void main(String[] args) {
 
-		ClaseService claseService=new ClaseService();
-		claseService.findAll();
+		AlumnoService alumnoService=new AlumnoService();
+		alumnoService.findById(2);
 		logger.debug("Todo OK");
 
 	}
