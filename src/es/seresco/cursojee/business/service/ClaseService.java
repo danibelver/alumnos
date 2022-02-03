@@ -26,12 +26,5 @@ public class ClaseService {
 		return claseDAO.findById(id);
 	}
 
-	public Clase insert(Clase clase) {
-		return claseDAO.insert(clase);
-	}
-
-	public void update(Clase clase) {
-		claseDAO.update(clase);
-	}
 
 }

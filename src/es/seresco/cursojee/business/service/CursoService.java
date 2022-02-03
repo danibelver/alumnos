@@ -26,12 +26,5 @@ public class CursoService {
 		return cursoDAO.findById(id);
 	}
 
-	public Curso insert(Curso curso) {
-		return cursoDAO.insert(curso);
-	}
-
-	public void update(Curso curso) {
-		cursoDAO.update(curso);
-	}
 
 }
