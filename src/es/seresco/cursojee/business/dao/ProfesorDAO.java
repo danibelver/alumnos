@@ -211,7 +211,7 @@ public class ProfesorDAO implements IColegioBaseDAO<Profesor> {
 			statement.executeUpdate(); //Ejecutamos consulta y no tenemos resultset porque no esperamos retorno de datos
 			logger.info("Registro con identificador "+profesor.getId()+" borrado correctamente");
 		} catch (SQLException e) {
-			logger.error("Ha ocurrido un error al ejecutar la consulta de borrado del profesor con id"+profesor.getId(),e);
+			logger.error("Ha ocurrido un error al ejecutar la consulta de borrado del profesor con id "+profesor.getId(),e);
 			throw new RuntimeException("Error al ejecutar la consulta", e);
 		}
 	}
