@@ -8,9 +8,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import es.seresco.cursojee.business.entities.Alumno;
+import es.seresco.cursojee.view.test.Principal;
 
 public class AlumnoDAO implements IColegioBaseDAO<Alumno> {
+	
+	final static Logger logger = Logger.getLogger(AlumnoDAO.class);
+
 
 	public static final String COLUMN_NOMBRE = "nombre";
 	public static final String COLUMN_APELLIDO = "apellido";
@@ -24,6 +30,7 @@ public class AlumnoDAO implements IColegioBaseDAO<Alumno> {
 		try {
 			statement = conexion.createStatement(); // Creación de sentencia en blanco.
 		} catch (SQLException e) {
+			logger.error("Ha ocurrido un error al obetener la conexión,e");
 			throw new RuntimeException("Error al obtener la conexión", e);
 		}
 		ResultSet rs;
@@ -31,6 +38,7 @@ public class AlumnoDAO implements IColegioBaseDAO<Alumno> {
 			rs = statement.executeQuery("Select id,nombre,apellido from Alumnos"); // Ejecución de consulta y asignamos
 																					// el resultado a un resultset
 		} catch (SQLException e) {
+			logger.error("Ha ocurrido un error al ejecutar la consulta");
 			throw new RuntimeException("Error al ejecutar la consulta", e);
 		}
 		try {
@@ -40,10 +48,12 @@ public class AlumnoDAO implements IColegioBaseDAO<Alumno> {
 				alumno.setNombre(rs.getString(COLUMN_NOMBRE));
 				alumno.setApellido(rs.getString(COLUMN_APELLIDO));
 				resultado.add(alumno);
+				logger.debug("Alumno "+alumno.getNombre()+" "+alumno.getApellido() +" leído correctamente.");
 			}
 
 			return resultado;
 		} catch (SQLException e) {
+			logger.error("Ha ocurrido un error al leer el registro");
 			throw new RuntimeException("Error al leer el registro", e);
 		}
 	}
