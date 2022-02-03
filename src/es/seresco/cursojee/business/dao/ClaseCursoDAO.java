@@ -79,7 +79,7 @@ public class ClaseCursoDAO implements IColegioBaseDAO<ClaseCurso> {
 		}
 		ResultSet rs;
 		try {
-			rs = statement.executeQuery("Select id,cursoLetra from Clases"); // Ejecución de consulta y asignamos
+			rs = statement.executeQuery("Select id,id_curso,id_clase,id_tutor from Clases_Curso"); // Ejecución de consulta y asignamos
 																				// el resultado a un resultset
 		} catch (SQLException e) {
 			throw new RuntimeException("Error al ejecutar la consulta", e);

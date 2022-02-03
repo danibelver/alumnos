@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import es.seresco.cursojee.business.entities.Alumno;
 import es.seresco.cursojee.business.entities.Profesor;
 import es.seresco.cursojee.business.service.AlumnoService;
+import es.seresco.cursojee.business.service.ClaseService;
 import es.seresco.cursojee.business.service.ProfesorService;
 
 public class Principal {
@@ -15,10 +16,8 @@ public class Principal {
 
 	public static void main(String[] args) {
 
-		ProfesorService profesorService = new ProfesorService();
-		Profesor profesor = new Profesor();
-		profesor.setId(14);
-		profesorService.delete(profesor);
+		ClaseService claseService=new ClaseService();
+		claseService.findAll();
 		logger.debug("Todo OK");
 
 	}

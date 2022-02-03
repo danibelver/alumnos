@@ -12,18 +12,10 @@ public class ClaseCursoService {
 
 	private ClaseCursoDAO claseCursoDAO;
 
-	private ProfesorService profesorService;
-
-	private ClaseService claseService;
-
-	private CursoService cursoService;
 
 	public ClaseCursoService() {
 		super();
 		claseCursoDAO = new ClaseCursoDAO();
-		//profesorService = new ProfesorService();
-		claseService = new ClaseService();
-		cursoService = new CursoService();
 	}
 
 	public List<ClaseCurso> findAll() {
@@ -35,6 +27,10 @@ public class ClaseCursoService {
 	}
 
 	public ClaseCurso findById(Integer id) {
+		
+		ClaseService claseService= new ClaseService();
+		CursoService cursoService = new CursoService();
+		ProfesorService profesorService = new ProfesorService();
 		ClaseCurso claseCurso = claseCursoDAO.findById(id);
 
 		Profesor profesor = profesorService.findById(claseCurso.getTutor().getId());
@@ -60,5 +56,16 @@ public class ClaseCursoService {
 	public void delete(ClaseCurso claseCurso) {
 		claseCursoDAO.delete(claseCurso);
 	}
+
+	public ClaseCursoDAO getClaseCursoDAO() {
+		return claseCursoDAO;
+	}
+
+	public void setClaseCursoDAO(ClaseCursoDAO claseCursoDAO) {
+		this.claseCursoDAO = claseCursoDAO;
+	}
+
+
+	
 
 }

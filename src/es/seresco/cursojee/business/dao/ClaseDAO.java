@@ -8,13 +8,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import es.seresco.cursojee.business.entities.Clase;
+import es.seresco.cursojee.view.test.Principal;
 
 public class ClaseDAO implements IColegioBaseDAO<Clase> {
 
 	public static final String COLUMN_CURSO = "curso";
 	public static final String COLUMN_LETRA = "letra";
 	public static final String COLUMN_ID = "id";
+	
+	final static Logger logger = Logger.getLogger(ClaseDAO.class);
 
 	@Override
 	public List<Clase> findAll() {
@@ -29,9 +34,10 @@ public class ClaseDAO implements IColegioBaseDAO<Clase> {
 		}
 		ResultSet rs;
 		try {
-			rs = statement.executeQuery("Select id,cursoLetra from Clases"); // Ejecución de consulta y asignamos
+			rs = statement.executeQuery("Select id,curso,letra from Clases"); // Ejecución de consulta y asignamos
 																				// el resultado a un resultset
 		} catch (SQLException e) {
+			logger.error("Ha ocurrido un error ejecutando la consulta de FindALL de ClaseDAO",e);
 			throw new RuntimeException("Error al ejecutar la consulta", e);
 		}
 		try {
@@ -40,9 +46,10 @@ public class ClaseDAO implements IColegioBaseDAO<Clase> {
 				clase.setId(rs.getInt(COLUMN_ID)); // Leemos una columna del resultset
 				clase.setCurso(rs.getInt(COLUMN_CURSO));
 				clase.setLetra(rs.getString(COLUMN_LETRA));
+				logger.debug("Se ha recuperado el registro "+clase.getCurso()+"º"+clase.getLetra());
 				resultado.add(clase);
 			}
-
+			logger.info("He recuperado todas las clases correctamente");
 			return resultado;
 		} catch (SQLException e) {
 			throw new RuntimeException("Error al leer el registro", e);
